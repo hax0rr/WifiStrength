@@ -1,5 +1,4 @@
 package com.example.hax0rr.wifistrength;
-
 import android.content.Intent;
 import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiInfo;
@@ -20,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button btn=(Button) findViewById(R.id.button);
         Button btn2=(Button) findViewById(R.id.button2);
-        btn2.setVisibility(View.INVISIBLE);
+//        btn2.setVisibility(View.INVISIBLE);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,16 +43,14 @@ public class MainActivity extends AppCompatActivity {
         TextView ssid=(TextView)findViewById(R.id.ssid);
         WifiManager wifiManager=(WifiManager)getApplicationContext().getSystemService(WIFI_SERVICE);
         WifiInfo wifiInfo=wifiManager.getConnectionInfo();
-        if(wifiInfo.getSupplicantState()== SupplicantState.COMPLETED){
+        if(wifiInfo.getSupplicantState()== SupplicantState.COMPLETED) {
             connectionStatus.setText("You Are Connected");
-            btn2.setVisibility(View.VISIBLE);
-            ssid.setVisibility(View.VISIBLE);
+
             ssid.setText(wifiInfo.getSSID());
         }else{
-            btn2.setVisibility(View.INVISIBLE);
-            ssid.setVisibility(View.INVISIBLE);
-            connectionStatus.setText("Wifi Not Connected!!!!");
+            ssid.setText("You aren't connected!");
         }
+
     }
 
     public void onClickDetails(){
